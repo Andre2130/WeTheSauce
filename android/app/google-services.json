@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "138024830351",
+    "project_id": "wethesauce-33b1d",
+    "storage_bucket": "wethesauce-33b1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138024830351:android:6bc15ab06ab7b84c4577fa",
+        "android_client_info": {
+          "package_name": "com.mycompany.wethesauce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138024830351-4e6lkmqe5bdpv6avm6ebcuj6a0ulf978.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.wethesauce",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "138024830351-g0oumfluscl7qrgsc5pa6avbgcbmg995.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQXdSx8R57THrF-Qk_yBj0bF4FNv9SYEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138024830351-g0oumfluscl7qrgsc5pa6avbgcbmg995.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138024830351-dlvdu5dmfj4hf81vd52oel3tc5rsrfge.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.wethesauce"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

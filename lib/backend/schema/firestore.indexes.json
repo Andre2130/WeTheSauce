@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "album",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "sauce",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "release_date",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}

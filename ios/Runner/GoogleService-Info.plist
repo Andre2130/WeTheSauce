@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>138024830351-dlvdu5dmfj4hf81vd52oel3tc5rsrfge.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.138024830351-dlvdu5dmfj4hf81vd52oel3tc5rsrfge</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>138024830351-4e6lkmqe5bdpv6avm6ebcuj6a0ulf978.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAnxY3e23rRcZ3joD0iZvIY3cP2cqJCDkk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>138024830351</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mycompany.wethesauce</string>
+	<key>PROJECT_ID</key>
+	<string>wethesauce-33b1d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wethesauce-33b1d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:138024830351:ios:9c6144521bd3985a4577fa</string>
+</dict>
+</plist>
