@@ -488,7 +488,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 10,
-                          mainAxisSpacing: 80,
+                          mainAxisSpacing: 50,
                           childAspectRatio: 1,
                         ),
                         scrollDirection: Axis.vertical,
@@ -528,7 +528,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
                                         0.45,
-                                    height: 190,
+                                    height: 120,
                                     decoration: BoxDecoration(
                                       color: Color(0xFF0F1113),
                                       image: DecorationImage(

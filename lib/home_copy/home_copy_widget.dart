@@ -1,7 +1,10 @@
+import '../album/album_widget.dart';
+import '../artist/artist_widget.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -435,15 +438,26 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                     ),
                           ),
                         ),
-                        Text(
-                          'See All',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Outfit',
-                                    color: Color(0xFF14181B),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                        InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    NavBarPage(initialPage: 'home'),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'See All',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF7B1FA2),
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                          ),
                         ),
                       ],
                     ),
@@ -458,137 +472,407 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                 decoration: BoxDecoration(
                   color: Color(0xFF0F1113),
                 ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                  child: StreamBuilder<List<AlbumRecord>>(
-                    stream: queryAlbumRecord(
-                      queryBuilder: (albumRecord) => albumRecord
-                          .where('sauce',
-                              arrayContains: FFAppState().currentfilter)
-                          .orderBy('release_date', descending: true),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                            ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                        child: Container(
+                          height: 250,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF0F1113),
                           ),
-                        );
-                      }
-                      List<AlbumRecord> listViewAlbumRecordList =
-                          snapshot.data!;
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: listViewAlbumRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewAlbumRecord =
-                              listViewAlbumRecordList[listViewIndex];
-                          return Container(
-                            width: 200,
-                            height: 190,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF0F1113),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.45,
-                                  height: 190,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFF0F1113),
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: Image.network(
-                                        listViewAlbumRecord.coverArt!,
-                                      ).image,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4,
-                                        color: Color(0x230E151B),
-                                        offset: Offset(0, 2),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(0),
-                                      bottomRight: Radius.circular(0),
-                                      topLeft: Radius.circular(12),
-                                      topRight: Radius.circular(12),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0, 0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 55,
-                                    decoration: BoxDecoration(
-                                      color: Color(0x6E6B6C70),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(12),
-                                        bottomRight: Radius.circular(12),
-                                        topLeft: Radius.circular(0),
-                                        topRight: Radius.circular(0),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                            child: StreamBuilder<List<AlbumRecord>>(
+                              stream: queryAlbumRecord(
+                                queryBuilder: (albumRecord) => albumRecord
+                                    .where('sauce',
+                                        arrayContains:
+                                            FFAppState().currentfilter)
+                                    .orderBy('release_date', descending: true),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: CircularProgressIndicator(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
                                       ),
                                     ),
-                                    alignment: AlignmentDirectional(
-                                        0, 0.050000000000000044),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8, 12, 0, 0),
-                                          child: Text(
-                                            listViewAlbumRecord.title!,
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .subtitle1
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Colors.white,
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.normal,
+                                  );
+                                }
+                                List<AlbumRecord> listViewAlbumRecordList =
+                                    snapshot.data!;
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: listViewAlbumRecordList.length,
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewAlbumRecord =
+                                        listViewAlbumRecordList[listViewIndex];
+                                    return Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 5, 0),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => AlbumWidget(
+                                                coverArt: listViewAlbumRecord
+                                                    .coverArt,
+                                                title:
+                                                    listViewAlbumRecord.title,
+                                                artist: listViewAlbumRecord
+                                                    .artistName,
+                                                releaseDate: listViewAlbumRecord
+                                                    .releaseDate,
+                                                artistID:
+                                                    listViewAlbumRecord.artitst,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 200,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF0F1113),
+                                            borderRadius:
+                                                BorderRadius.circular(12),
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 190,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xFF0F1113),
+                                                  image: DecorationImage(
+                                                    fit: BoxFit.cover,
+                                                    image: Image.network(
+                                                      listViewAlbumRecord
+                                                          .coverArt!,
+                                                    ).image,
+                                                  ),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4,
+                                                      color: Color(0x230E151B),
+                                                      offset: Offset(0, 2),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(0),
+                                                    bottomRight:
+                                                        Radius.circular(0),
+                                                    topLeft:
+                                                        Radius.circular(12),
+                                                    topRight:
+                                                        Radius.circular(12),
+                                                  ),
                                                 ),
+                                              ),
+                                              Align(
+                                                alignment:
+                                                    AlignmentDirectional(0, 0),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 55,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0x6E6B6C70),
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(12),
+                                                      bottomRight:
+                                                          Radius.circular(12),
+                                                      topLeft:
+                                                          Radius.circular(0),
+                                                      topRight:
+                                                          Radius.circular(0),
+                                                    ),
+                                                  ),
+                                                  alignment:
+                                                      AlignmentDirectional(0,
+                                                          0.050000000000000044),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(8, 12,
+                                                                    0, 0),
+                                                        child: Text(
+                                                          listViewAlbumRecord
+                                                              .title!,
+                                                          maxLines: 1,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .subtitle1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8, 4, 0, 0),
+                                                        child: Text(
+                                                          listViewAlbumRecord
+                                                              .artistName!,
+                                                          maxLines: 1,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyText2
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8, 4, 0, 0),
-                                          child: Text(
-                                            listViewAlbumRecord.artistName!,
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Colors.white,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              'Artist',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFFF1F4F8),
+                                    fontSize: 16,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 250,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF0F1113),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          child: StreamBuilder<List<ArtitstRecord>>(
+                            stream: queryArtitstRecord(
+                              queryBuilder: (artitstRecord) => artitstRecord
+                                  .orderBy('name', descending: true),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: CircularProgressIndicator(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
+                                );
+                              }
+                              List<ArtitstRecord> listViewArtitstRecordList =
+                                  snapshot.data!;
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: listViewArtitstRecordList.length,
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewArtitstRecord =
+                                      listViewArtitstRecordList[listViewIndex];
+                                  return Container(
+                                    width: 200,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF0F1113),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 5, 0),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ArtistWidget(
+                                                name:
+                                                    listViewArtitstRecord.name,
+                                                age: listViewArtitstRecord.age,
+                                                bio: listViewArtitstRecord.bio,
+                                                homeTown: listViewArtitstRecord
+                                                    .homeTown,
+                                                artistID: listViewArtitstRecord
+                                                    .reference,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              width: 100,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFF0F1113),
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: Image.network(
+                                                    listViewArtitstRecord
+                                                        .photoUrl!,
+                                                  ).image,
+                                                ),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 4,
+                                                    color: Color(0x230E151B),
+                                                    offset: Offset(0, 2),
+                                                  )
+                                                ],
+                                                shape: BoxShape.circle,
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: Container(
+                                                width: 200,
+                                                height: 55,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0x6E6B6C70),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(12),
+                                                    bottomRight:
+                                                        Radius.circular(12),
+                                                    topLeft: Radius.circular(0),
+                                                    topRight:
+                                                        Radius.circular(0),
+                                                  ),
+                                                ),
+                                                alignment: AlignmentDirectional(
+                                                    0, 0.050000000000000044),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8, 12, 0, 0),
+                                                      child: Text(
+                                                        listViewArtitstRecord
+                                                            .name!,
+                                                        maxLines: 1,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .subtitle1
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8, 4, 0, 0),
+                                                      child: Text(
+                                                        listViewArtitstRecord
+                                                            .homeTown!,
+                                                        maxLines: 1,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyText2
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

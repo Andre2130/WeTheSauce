@@ -109,8 +109,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'homeCopy': HomeCopyWidget(),
       'home': HomeWidget(),
+      'homeCopy': HomeCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
     return Scaffold(
@@ -120,14 +120,14 @@ class _NavBarPageState extends State<NavBarPage> {
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         backgroundColor: Color(0xFF0F1113),
         selectedItemColor: Color(0xFF7B1FA2),
-        unselectedItemColor: Color(0x8A000000),
+        unselectedItemColor: Color(0xFFF1F4F8),
         showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.library_music,
               size: 24,
             ),
             label: 'Home',
