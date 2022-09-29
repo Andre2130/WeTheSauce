@@ -27,6 +27,12 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
   }
 
   @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
@@ -144,6 +150,20 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1,
@@ -537,6 +557,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                     .releaseDate,
                                                 artistID:
                                                     listViewAlbumRecord.artitst,
+                                                description: listViewAlbumRecord
+                                                    .description,
                                               ),
                                             ),
                                           );
@@ -591,7 +613,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                     AlignmentDirectional(0, 0),
                                                 child: Container(
                                                   width: double.infinity,
-                                                  height: 55,
+                                                  height: 65,
                                                   decoration: BoxDecoration(
                                                     color: Color(0x6E6B6C70),
                                                     borderRadius:
@@ -789,7 +811,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                   AlignmentDirectional(0, 0),
                                               child: Container(
                                                 width: 200,
-                                                height: 55,
+                                                height: 65,
                                                 decoration: BoxDecoration(
                                                   color: Color(0x6E6B6C70),
                                                   borderRadius:

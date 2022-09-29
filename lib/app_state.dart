@@ -21,6 +21,8 @@ class FFAppState {
   List<String> sauce = ['Hot', 'Trap', 'SweetBaby'];
 
   String currentfilter = 'All';
+
+  String key = 'AIzaSyCdIDvungzwp2d9AMivD62EBB0qyw-Agdk';
 }
 
 LatLng? _latLngFromString(String? val) {

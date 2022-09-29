@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore_platform_interface: 5.5.10
   cloud_firestore_web: 2.6.19
   easy_debounce: 2.0.1
+  equatable: 2.0.3
   firebase_auth: 3.4.1
   firebase_auth_platform_interface: 6.3.1
   firebase_auth_web: 3.3.19
@@ -49,7 +50,7 @@ dependencies:
   intl: 0.17.0
   json_path: 0.4.1
   json_serializable: 6.3.1
-  page_transition: 2.0.9
+  page_transition: 2.0.4
   plugin_platform_interface: 2.1.2
   rxdart: 0.27.4
   shared_preferences: 2.0.15

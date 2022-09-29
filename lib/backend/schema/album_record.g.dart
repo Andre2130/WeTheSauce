@@ -73,6 +73,13 @@ class _$AlbumRecordSerializer implements StructuredSerializer<AlbumRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.description;
+    if (value != null) {
+      result
+        ..add('description')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -130,6 +137,10 @@ class _$AlbumRecordSerializer implements StructuredSerializer<AlbumRecord> {
           result.artistName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -159,6 +170,8 @@ class _$AlbumRecord extends AlbumRecord {
   @override
   final String? artistName;
   @override
+  final String? description;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$AlbumRecord([void Function(AlbumRecordBuilder)? updates]) =>
@@ -172,6 +185,7 @@ class _$AlbumRecord extends AlbumRecord {
       this.sauce,
       this.releaseDate,
       this.artistName,
+      this.description,
       this.ffRef})
       : super._();
 
@@ -193,6 +207,7 @@ class _$AlbumRecord extends AlbumRecord {
         sauce == other.sauce &&
         releaseDate == other.releaseDate &&
         artistName == other.artistName &&
+        description == other.description &&
         ffRef == other.ffRef;
   }
 
@@ -203,12 +218,14 @@ class _$AlbumRecord extends AlbumRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, title.hashCode), artitst.hashCode),
-                            coverArt.hashCode),
-                        features.hashCode),
-                    sauce.hashCode),
-                releaseDate.hashCode),
-            artistName.hashCode),
+                        $jc(
+                            $jc($jc($jc(0, title.hashCode), artitst.hashCode),
+                                coverArt.hashCode),
+                            features.hashCode),
+                        sauce.hashCode),
+                    releaseDate.hashCode),
+                artistName.hashCode),
+            description.hashCode),
         ffRef.hashCode));
   }
 
@@ -222,6 +239,7 @@ class _$AlbumRecord extends AlbumRecord {
           ..add('sauce', sauce)
           ..add('releaseDate', releaseDate)
           ..add('artistName', artistName)
+          ..add('description', description)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -260,6 +278,10 @@ class AlbumRecordBuilder implements Builder<AlbumRecord, AlbumRecordBuilder> {
   String? get artistName => _$this._artistName;
   set artistName(String? artistName) => _$this._artistName = artistName;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -278,6 +300,7 @@ class AlbumRecordBuilder implements Builder<AlbumRecord, AlbumRecordBuilder> {
       _sauce = $v.sauce?.toBuilder();
       _releaseDate = $v.releaseDate;
       _artistName = $v.artistName;
+      _description = $v.description;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -310,6 +333,7 @@ class AlbumRecordBuilder implements Builder<AlbumRecord, AlbumRecordBuilder> {
               sauce: _sauce?.build(),
               releaseDate: releaseDate,
               artistName: artistName,
+              description: description,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

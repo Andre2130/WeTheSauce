@@ -16,6 +16,7 @@ class AlbumWidget extends StatefulWidget {
     this.releaseDate,
     this.featuers,
     this.artistID,
+    this.description,
   }) : super(key: key);
 
   final String? coverArt;
@@ -24,6 +25,7 @@ class AlbumWidget extends StatefulWidget {
   final DateTime? releaseDate;
   final DocumentReference? featuers;
   final DocumentReference? artistID;
+  final String? description;
 
   @override
   _AlbumWidgetState createState() => _AlbumWidgetState();
@@ -127,7 +129,7 @@ class _AlbumWidgetState extends State<AlbumWidget> {
                 children: [
                   Expanded(
                     child: Text(
-                      'The best of all 3 worlds, Row & Flow offers high intensity rowing and strength intervals followed by athletic based yoga sure to enhance flexible and clear the mind. Yoga mats are provided but bringing your own yoga mat is highly encouraged.',
+                      'Bio Goes here',
                       style: FlutterFlowTheme.of(context).bodyText2,
                     ),
                   ),
@@ -245,10 +247,21 @@ class _AlbumWidgetState extends State<AlbumWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 24),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('ButtonPrimary pressed ...');
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ArtistWidget(
+                        name: widget.artist,
+                        age: 0,
+                        bio: '',
+                        homeTown: '',
+                        artistID: widget.artistID,
+                      ),
+                    ),
+                  );
                 },
-                text: 'Reserve Spot',
+                text: 'Share your thoughts',
                 options: FFButtonOptions(
                   width: 300,
                   height: 60,

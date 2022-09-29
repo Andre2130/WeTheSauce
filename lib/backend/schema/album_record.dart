@@ -26,6 +26,8 @@ abstract class AlbumRecord implements Built<AlbumRecord, AlbumRecordBuilder> {
   @BuiltValueField(wireName: 'artist_name')
   String? get artistName;
 
+  String? get description;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -35,7 +37,8 @@ abstract class AlbumRecord implements Built<AlbumRecord, AlbumRecordBuilder> {
     ..coverArt = ''
     ..features = ListBuilder()
     ..sauce = ListBuilder()
-    ..artistName = '';
+    ..artistName = ''
+    ..description = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('album');
@@ -64,6 +67,7 @@ Map<String, dynamic> createAlbumRecordData({
   String? coverArt,
   DateTime? releaseDate,
   String? artistName,
+  String? description,
 }) {
   final firestoreData = serializers.toFirestore(
     AlbumRecord.serializer,
@@ -75,7 +79,8 @@ Map<String, dynamic> createAlbumRecordData({
         ..features = null
         ..sauce = null
         ..releaseDate = releaseDate
-        ..artistName = artistName,
+        ..artistName = artistName
+        ..description = description,
     ),
   );
 
