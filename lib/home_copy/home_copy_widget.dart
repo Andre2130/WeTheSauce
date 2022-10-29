@@ -36,6 +36,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: Color(0xFF0F1113),
       appBar: AppBar(
         backgroundColor: Color(0xFF0F1113),
         automaticallyImplyLeading: false,
@@ -70,7 +71,6 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFF0F1113),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(

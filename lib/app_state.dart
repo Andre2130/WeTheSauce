@@ -23,6 +23,8 @@ class FFAppState {
   String currentfilter = 'All';
 
   String key = 'AIzaSyCdIDvungzwp2d9AMivD62EBB0qyw-Agdk';
+
+  String videoId = '';
 }
 
 LatLng? _latLngFromString(String? val) {

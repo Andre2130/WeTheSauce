@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../youtube/youtube_widget.dart';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -167,8 +168,13 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => YoutubeWidget(),
+                                      ),
+                                    );
                                   },
                                   text: 'Subscribe',
                                   options: FFButtonOptions(
@@ -594,135 +600,157 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 12, 12, 0, 12),
-                                                    child: Container(
-                                                      width: 270,
-                                                      height: 100,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            blurRadius: 4,
-                                                            color: Color(
-                                                                0x1F000000),
-                                                          )
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                      ),
-                                                      child: Container(
-                                                        width: 100,
-                                                        height: 70,
-                                                        child: Stack(
-                                                          children: [
-                                                            ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8),
-                                                              child:
-                                                                  Image.network(
-                                                                valueOrDefault<
-                                                                    String>(
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        await Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                YoutubeWidget(
+                                                              videoId:
                                                                   getJsonField(
-                                                                    itemItem,
-                                                                    r'''$.snippet.thumbnails.high.url''',
-                                                                  ),
-                                                                  'https://storage.googleapis.com/wethesauce-music/2022/07/279ff051-brent-faiyaz-wasteland-300x300.jpg',
-                                                                ),
-                                                                width: double
-                                                                    .infinity,
-                                                                height: double
-                                                                    .infinity,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
+                                                                itemItem,
+                                                                r'''$.id.videoId''',
+                                                              ).toString(),
                                                             ),
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      1, 1),
-                                                              child: ClipRect(
-                                                                child:
-                                                                    BackdropFilter(
-                                                                  filter:
-                                                                      ImageFilter
-                                                                          .blur(
-                                                                    sigmaX: 5,
-                                                                    sigmaY: 2,
-                                                                  ),
-                                                                  child:
-                                                                      Container(
-                                                                    width: double
-                                                                        .infinity,
-                                                                    height: 50,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      gradient:
-                                                                          LinearGradient(
-                                                                        colors: [
-                                                                          Colors
-                                                                              .transparent,
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .secondaryColor
-                                                                        ],
-                                                                        stops: [
-                                                                          0,
-                                                                          1
-                                                                        ],
-                                                                        begin: AlignmentDirectional(
-                                                                            0,
-                                                                            -1),
-                                                                        end: AlignmentDirectional(
-                                                                            0,
-                                                                            1),
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(8),
-                                                                        bottomRight:
-                                                                            Radius.circular(8),
-                                                                        topLeft:
-                                                                            Radius.circular(0),
-                                                                        topRight:
-                                                                            Radius.circular(0),
-                                                                      ),
+                                                          ),
+                                                        );
+                                                        setState(() =>
+                                                            FFAppState()
+                                                                    .videoId =
+                                                                getJsonField(
+                                                              itemItem,
+                                                              r'''$.id.videoId''',
+                                                            ).toString());
+                                                      },
+                                                      child: Container(
+                                                        width: 270,
+                                                        height: 100,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4,
+                                                              color: Color(
+                                                                  0x1F000000),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                        child: Container(
+                                                          width: 100,
+                                                          height: 70,
+                                                          child: Stack(
+                                                            children: [
+                                                              ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8),
+                                                                child: Image
+                                                                    .network(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    getJsonField(
+                                                                      itemItem,
+                                                                      r'''$.snippet.thumbnails.high.url''',
                                                                     ),
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            -1,
-                                                                            0),
+                                                                    'https://storage.googleapis.com/wethesauce-music/2022/07/279ff051-brent-faiyaz-wasteland-300x300.jpg',
+                                                                  ),
+                                                                  width: double
+                                                                      .infinity,
+                                                                  height: double
+                                                                      .infinity,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        1, 1),
+                                                                child: ClipRect(
+                                                                  child:
+                                                                      BackdropFilter(
+                                                                    filter:
+                                                                        ImageFilter
+                                                                            .blur(
+                                                                      sigmaX: 5,
+                                                                      sigmaY: 2,
+                                                                    ),
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                              16,
+                                                                        Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          50,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        gradient:
+                                                                            LinearGradient(
+                                                                          colors: [
+                                                                            Colors.transparent,
+                                                                            FlutterFlowTheme.of(context).secondaryColor
+                                                                          ],
+                                                                          stops: [
+                                                                            0,
+                                                                            1
+                                                                          ],
+                                                                          begin: AlignmentDirectional(
                                                                               0,
+                                                                              -1),
+                                                                          end: AlignmentDirectional(
                                                                               0,
+                                                                              1),
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.only(
+                                                                          bottomLeft:
+                                                                              Radius.circular(8),
+                                                                          bottomRight:
+                                                                              Radius.circular(8),
+                                                                          topLeft:
+                                                                              Radius.circular(0),
+                                                                          topRight:
+                                                                              Radius.circular(0),
+                                                                        ),
+                                                                      ),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              -1,
                                                                               0),
                                                                       child:
-                                                                          Text(
-                                                                        getJsonField(
-                                                                          itemItem,
-                                                                          r'''$.snippet.title''',
-                                                                        ).toString(),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .subtitle1
-                                                                            .override(
-                                                                              fontFamily: 'Poppins',
-                                                                              color: Colors.white,
-                                                                            ),
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            16,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                        child:
+                                                                            Text(
+                                                                          getJsonField(
+                                                                            itemItem,
+                                                                            r'''$.snippet.title''',
+                                                                          ).toString(),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .subtitle1
+                                                                              .override(
+                                                                                fontFamily: 'Poppins',
+                                                                                color: Colors.white,
+                                                                              ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -990,153 +1018,178 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 16, 0, 16, 12),
-                                                    child: Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                      height: 100,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                            blurRadius: 3,
-                                                            color: Color(
-                                                                0x411D2429),
-                                                            offset:
-                                                                Offset(0, 1),
-                                                          )
-                                                        ],
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8, 8, 8, 8),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          1,
-                                                                          1,
-                                                                          1),
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12),
-                                                                child: Image
-                                                                    .network(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    getJsonField(
-                                                                      item2Item,
-                                                                      r'''$.snippet.thumbnails.high.url''',
-                                                                    ),
-                                                                    'https://storage.googleapis.com/wethesauce-music/2022/07/279ff051-brent-faiyaz-wasteland-300x300.jpg',
-                                                                  ),
-                                                                  width: 70,
-                                                                  height: 100,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              child: Padding(
+                                                    child: InkWell(
+                                                      onTap: () async {
+                                                        await Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                YoutubeWidget(),
+                                                          ),
+                                                        );
+                                                        setState(() =>
+                                                            FFAppState()
+                                                                    .videoId =
+                                                                getJsonField(
+                                                              item2Item,
+                                                              r'''$.id.videoId''',
+                                                            ).toString());
+                                                      },
+                                                      child: Container(
+                                                        width: MediaQuery.of(
+                                                                context)
+                                                            .size
+                                                            .width,
+                                                        height: 100,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 3,
+                                                              color: Color(
+                                                                  0x411D2429),
+                                                              offset:
+                                                                  Offset(0, 1),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(8,
+                                                                      8, 8, 8),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            8,
-                                                                            8,
-                                                                            4,
-                                                                            0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        getJsonField(
-                                                                          item2Item,
-                                                                          r'''$.snippet.title''',
-                                                                        ).toString(),
-                                                                        'Test',
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .subtitle1,
-                                                                    ),
-                                                                    Expanded(
-                                                                      child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0,
-                                                                            4,
-                                                                            8,
-                                                                            0),
-                                                                        child:
-                                                                            AutoSizeText(
-                                                                          'A wonderfully delicious 2 patty melt that melts into your...',
-                                                                          textAlign:
-                                                                              TextAlign.start,
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyText2,
-                                                                        ),
+                                                                            1,
+                                                                            1,
+                                                                            1),
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12),
+                                                                  child: Image
+                                                                      .network(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      getJsonField(
+                                                                        item2Item,
+                                                                        r'''$.snippet.thumbnails.high.url''',
                                                                       ),
+                                                                      'https://storage.googleapis.com/wethesauce-music/2022/07/279ff051-brent-faiyaz-wasteland-300x300.jpg',
                                                                     ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0,
-                                                                          4,
-                                                                          0,
-                                                                          0),
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .chevron_right_rounded,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                    size: 24,
+                                                                    width: 70,
+                                                                    height: 100,
+                                                                    fit: BoxFit
+                                                                        .cover,
                                                                   ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          ],
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8,
+                                                                          8,
+                                                                          4,
+                                                                          0),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          getJsonField(
+                                                                            item2Item,
+                                                                            r'''$.snippet.title''',
+                                                                          ).toString(),
+                                                                          'Test',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .subtitle1,
+                                                                      ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              0,
+                                                                              4,
+                                                                              8,
+                                                                              0),
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            getJsonField(
+                                                                              item2Item,
+                                                                              r'''$.id.videoId''',
+                                                                            ).toString().maybeHandleOverflow(
+                                                                                  maxChars: 70,
+                                                                                  replacement: '…',
+                                                                                ),
+                                                                            textAlign:
+                                                                                TextAlign.start,
+                                                                            style:
+                                                                                FlutterFlowTheme.of(context).bodyText2,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            4,
+                                                                            0,
+                                                                            0),
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .chevron_right_rounded,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size: 24,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),

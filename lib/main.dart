@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'auth/firebase_user_provider.dart';
+import 'auth/auth_util.dart';
 
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     userStream = weTheSauceFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
+    jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
       () => setState(() => displaySplashImage = false),

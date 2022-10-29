@@ -38,6 +38,7 @@ class _AlbumWidgetState extends State<AlbumWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         automaticallyImplyLeading: false,
@@ -59,7 +60,6 @@ class _AlbumWidgetState extends State<AlbumWidget> {
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,

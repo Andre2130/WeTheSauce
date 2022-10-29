@@ -16,4 +16,8 @@ Stream<WeTheSauceFirebaseUser> weTheSauceFirebaseUserStream() =>
             ? TimerStream(true, const Duration(seconds: 1))
             : Stream.value(user))
         .map<WeTheSauceFirebaseUser>(
-            (user) => currentUser = WeTheSauceFirebaseUser(user));
+      (user) {
+        currentUser = WeTheSauceFirebaseUser(user);
+        return currentUser!;
+      },
+    );
