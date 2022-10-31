@@ -80,6 +80,13 @@ class _$AlbumRecordSerializer implements StructuredSerializer<AlbumRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.youtubeId;
+    if (value != null) {
+      result
+        ..add('youtube_id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -141,6 +148,10 @@ class _$AlbumRecordSerializer implements StructuredSerializer<AlbumRecord> {
           result.description = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'youtube_id':
+          result.youtubeId = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -172,6 +183,8 @@ class _$AlbumRecord extends AlbumRecord {
   @override
   final String? description;
   @override
+  final String? youtubeId;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$AlbumRecord([void Function(AlbumRecordBuilder)? updates]) =>
@@ -186,6 +199,7 @@ class _$AlbumRecord extends AlbumRecord {
       this.releaseDate,
       this.artistName,
       this.description,
+      this.youtubeId,
       this.ffRef})
       : super._();
 
@@ -208,6 +222,7 @@ class _$AlbumRecord extends AlbumRecord {
         releaseDate == other.releaseDate &&
         artistName == other.artistName &&
         description == other.description &&
+        youtubeId == other.youtubeId &&
         ffRef == other.ffRef;
   }
 
@@ -219,13 +234,17 @@ class _$AlbumRecord extends AlbumRecord {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, title.hashCode), artitst.hashCode),
-                                coverArt.hashCode),
-                            features.hashCode),
-                        sauce.hashCode),
-                    releaseDate.hashCode),
-                artistName.hashCode),
-            description.hashCode),
+                            $jc(
+                                $jc(
+                                    $jc($jc(0, title.hashCode),
+                                        artitst.hashCode),
+                                    coverArt.hashCode),
+                                features.hashCode),
+                            sauce.hashCode),
+                        releaseDate.hashCode),
+                    artistName.hashCode),
+                description.hashCode),
+            youtubeId.hashCode),
         ffRef.hashCode));
   }
 
@@ -240,6 +259,7 @@ class _$AlbumRecord extends AlbumRecord {
           ..add('releaseDate', releaseDate)
           ..add('artistName', artistName)
           ..add('description', description)
+          ..add('youtubeId', youtubeId)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -282,6 +302,10 @@ class AlbumRecordBuilder implements Builder<AlbumRecord, AlbumRecordBuilder> {
   String? get description => _$this._description;
   set description(String? description) => _$this._description = description;
 
+  String? _youtubeId;
+  String? get youtubeId => _$this._youtubeId;
+  set youtubeId(String? youtubeId) => _$this._youtubeId = youtubeId;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -301,6 +325,7 @@ class AlbumRecordBuilder implements Builder<AlbumRecord, AlbumRecordBuilder> {
       _releaseDate = $v.releaseDate;
       _artistName = $v.artistName;
       _description = $v.description;
+      _youtubeId = $v.youtubeId;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -334,6 +359,7 @@ class AlbumRecordBuilder implements Builder<AlbumRecord, AlbumRecordBuilder> {
               releaseDate: releaseDate,
               artistName: artistName,
               description: description,
+              youtubeId: youtubeId,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

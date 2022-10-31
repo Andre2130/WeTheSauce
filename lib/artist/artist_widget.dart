@@ -1,3 +1,4 @@
+import '../album_page/album_page_widget.dart';
 import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
@@ -351,188 +352,206 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                       return Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16, 12, 16, 0),
-                                        child: Container(
-                                          width: 100,
-                                          height: 200,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4,
-                                                color: Color(0x2B202529),
-                                                offset: Offset(0, 2),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12, 12, 12, 12),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      width: 100,
-                                                      height: 70,
-                                                      child: Stack(
-                                                        children: [
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8),
-                                                            child:
-                                                                Image.network(
-                                                              listViewAlbumRecord
-                                                                  .coverArt!,
-                                                              width: 100,
-                                                              height: 70,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    1.01, 1.05),
-                                                            child: ClipRect(
+                                        child: InkWell(
+                                          onTap: () async {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AlbumPageWidget(
+                                                  youtubePlaylistId:
+                                                      listViewAlbumRecord
+                                                          .youtubeId,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Container(
+                                            width: 100,
+                                            height: 200,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 4,
+                                                  color: Color(0x2B202529),
+                                                  offset: Offset(0, 2),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(12, 12, 12, 12),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width: 100,
+                                                        height: 70,
+                                                        child: Stack(
+                                                          children: [
+                                                            ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8),
                                                               child:
-                                                                  BackdropFilter(
-                                                                filter:
-                                                                    ImageFilter
-                                                                        .blur(
-                                                                  sigmaX: 5,
-                                                                  sigmaY: 2,
-                                                                ),
+                                                                  Image.network(
+                                                                listViewAlbumRecord
+                                                                    .coverArt!,
+                                                                width: 100,
+                                                                height: 70,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      1.01,
+                                                                      1.05),
+                                                              child: ClipRect(
                                                                 child:
-                                                                    Container(
-                                                                  width: 50,
-                                                                  height: 24,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Color(
-                                                                        0xBF0F1113),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      bottomLeft:
-                                                                          Radius.circular(
-                                                                              0),
-                                                                      bottomRight:
-                                                                          Radius.circular(
-                                                                              8),
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              8),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              0),
-                                                                    ),
+                                                                    BackdropFilter(
+                                                                  filter:
+                                                                      ImageFilter
+                                                                          .blur(
+                                                                    sigmaX: 5,
+                                                                    sigmaY: 2,
                                                                   ),
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0, 0),
-                                                                  child: Text(
-                                                                    '05:03',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyText1
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          color:
-                                                                              Colors.white,
-                                                                        ),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 50,
+                                                                    height: 24,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xBF0F1113),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(0),
+                                                                        bottomRight:
+                                                                            Radius.circular(8),
+                                                                        topLeft:
+                                                                            Radius.circular(8),
+                                                                        topRight:
+                                                                            Radius.circular(0),
+                                                                      ),
+                                                                    ),
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            0,
+                                                                            0),
+                                                                    child: Text(
+                                                                      '05:03',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyText1
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                Colors.white,
+                                                                          ),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(16, 0,
-                                                                    0, 0),
-                                                        child: Text(
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(16,
+                                                                      0, 0, 0),
+                                                          child: Text(
+                                                            listViewAlbumRecord
+                                                                .title!,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .subtitle2,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 16, 0, 0),
+                                                    child: Text(
+                                                      dateTimeFormat(
+                                                          'yMMMd',
                                                           listViewAlbumRecord
-                                                              .title!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .subtitle2,
+                                                              .releaseDate!),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2,
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    height: 24,
+                                                    thickness: 1,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  ),
+                                                  Expanded(
+                                                    child: FFButtonWidget(
+                                                      onPressed: () {
+                                                        print(
+                                                            'Button pressed ...');
+                                                      },
+                                                      text: 'Download',
+                                                      icon: Icon(
+                                                        Icons
+                                                            .cloud_download_rounded,
+                                                        size: 15,
+                                                      ),
+                                                      options: FFButtonOptions(
+                                                        width: 130,
+                                                        height: 44,
+                                                        color:
+                                                            Color(0x004B39EF),
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle2
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  fontSize: 14,
+                                                                ),
+                                                        borderSide: BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1,
                                                         ),
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 16, 0, 0),
-                                                  child: Text(
-                                                    dateTimeFormat(
-                                                        'yMMMd',
-                                                        listViewAlbumRecord
-                                                            .releaseDate!),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText2,
                                                   ),
-                                                ),
-                                                Divider(
-                                                  height: 24,
-                                                  thickness: 1,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                ),
-                                                Expanded(
-                                                  child: FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
-                                                    },
-                                                    text: 'Download',
-                                                    icon: Icon(
-                                                      Icons
-                                                          .cloud_download_rounded,
-                                                      size: 15,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      width: 130,
-                                                      height: 44,
-                                                      color: Color(0x004B39EF),
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 14,
-                                                              ),
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1024,7 +1043,13 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                                           context,
                                                           MaterialPageRoute(
                                                             builder: (context) =>
-                                                                YoutubeWidget(),
+                                                                YoutubeWidget(
+                                                              videoId:
+                                                                  getJsonField(
+                                                                item2Item,
+                                                                r'''$.id.videoId''',
+                                                              ).toString(),
+                                                            ),
                                                           ),
                                                         );
                                                         setState(() =>
