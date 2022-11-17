@@ -118,6 +118,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'home': HomeWidget(),
       'homeCopy': HomeCopyWidget(),
+      'playlist': PlaylistWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -146,6 +147,14 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_outlined,
+              size: 24,
+            ),
+            label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.playlist_play,
               size: 24,
             ),
             label: 'Home',

@@ -420,7 +420,7 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                                                   AlignmentDirectional(
                                                                       1.01,
                                                                       1.05),
-                                                              child: ClipRect(
+                                                              child: ClipRRect(
                                                                 child:
                                                                     BackdropFilter(
                                                                   filter:
@@ -693,7 +693,8 @@ class _ArtistWidgetState extends State<ArtistWidget> {
                                                                 alignment:
                                                                     AlignmentDirectional(
                                                                         1, 1),
-                                                                child: ClipRect(
+                                                                child:
+                                                                    ClipRRect(
                                                                   child:
                                                                       BackdropFilter(
                                                                     filter:

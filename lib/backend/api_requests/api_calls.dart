@@ -53,6 +53,7 @@ class YouTubeSearchCall {
         'key': key,
       },
       returnBody: true,
+      cache: false,
     );
   }
 }
@@ -76,6 +77,7 @@ class YoutubeplaylistitemCall {
         'key': key,
       },
       returnBody: true,
+      cache: false,
     );
   }
 }
@@ -99,6 +101,7 @@ class YouTubeVideosCall {
         'key': key,
       },
       returnBody: true,
+      cache: false,
     );
   }
 }
@@ -124,6 +127,7 @@ class YoutubesearchCall {
         'key': key,
       },
       returnBody: true,
+      cache: false,
     );
   }
 }
